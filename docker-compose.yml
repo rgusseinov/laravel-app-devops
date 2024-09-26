@@ -1,0 +1,39 @@
+# For testing of production
+version: '3.8'
+
+services:
+  app:
+    image: ruslan0688/laravel-app-devops
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    command: ["php", "artisan", "test"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_CONNECTION=${DB_CONNECTION}
+      - DB_PORT=${DB_PORT}
+      - DATABASE_HOST=${DB_HOST}
+      - DATABASE_NAME=${DB_DATABASE}
+      - DATABASE_USERNAME=${DB_USERNAME}
+      - DATABASE_PASSWORD=${DB_PASSWORD} 
+    env_file:
+      - app/.env
+
+  db:
+    image: postgres:latest
+    ports:
+      - "0.0.0.0:5433:5432"
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=RG2023!
+      - POSTGRES_DB=laravel_db
+    env_file:
+      - app/.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
