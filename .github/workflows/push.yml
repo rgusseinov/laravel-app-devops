@@ -16,10 +16,12 @@ jobs:
 
       - name: Set up environment variables
         run: |
-          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> .env
-          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> .env
-          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> .env
-          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
+          echo "DB_CONNECTION=${{ secrets.DB_CONNECTION }}" >> app/.env
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> app/.env
+          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> app/.env
+          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> app/.env
+          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> app/.env
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> app/.env
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
