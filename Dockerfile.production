@@ -1,4 +1,5 @@
 FROM php:8.2-apache
+
 WORKDIR /app
 
 # Install dependencies
@@ -21,6 +22,8 @@ RUN apt-get update && apt-get install -y \
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN php artisan --version
 
 RUN apt-get update && \
     apt-get install postgresql-client --yes
