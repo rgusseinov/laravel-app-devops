@@ -34,6 +34,8 @@ COPY app/. .
 # Install application dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 
+RUN php artisan config:clear && php artisan config:cache
+
 EXPOSE 8080
 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
