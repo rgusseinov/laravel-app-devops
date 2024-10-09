@@ -23,8 +23,6 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN php artisan --version
-
 RUN apt-get update && \
     apt-get install postgresql-client --yes
 
@@ -38,6 +36,8 @@ COPY app/. .
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 
 RUN php artisan config:clear && php artisan config:cache
+
+RUN php artisan --version
 
 EXPOSE 8080
 
