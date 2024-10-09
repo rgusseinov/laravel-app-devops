@@ -11,3 +11,6 @@ services:
     ports:
       - "8080:8080"
     command: ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"] # Run container in port 8080
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1

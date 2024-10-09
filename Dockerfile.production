@@ -10,9 +10,12 @@ RUN apt-get update && apt-get install -y \
     postgresql-client \
     && docker-php-ext-install pdo pdo_pgsql pdo_mysql
 
+RUN apt-get update && \
+    apt-get install postgresql-client --yes
+
 # Важно для кеширования слоев   
-COPY app/package.json package.json
-COPY app/package-lock.json package-lock.json
+#COPY app/package.json package.json
+#COPY app/package-lock.json package-lock.json
 
 COPY app/. .
 
