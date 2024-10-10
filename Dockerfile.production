@@ -32,12 +32,12 @@ RUN apt-get update && \
 
 COPY app/. .
 
-COPY app/composer.json app/composer.lock ./
-
 # Install application dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 
 RUN php artisan config:clear && php artisan config:cache
+
+RUN php artisan make test
 
 EXPOSE 8080
 
