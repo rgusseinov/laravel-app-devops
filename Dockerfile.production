@@ -37,7 +37,7 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader --no-d
 
 RUN php artisan config:clear && php artisan config:cache
 
-RUN npm ci
+RUN php artisan test
 
 EXPOSE 8080
 
