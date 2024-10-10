@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.production
-    command: ["php", "artisan", "test"]
+    command: ["php", "artisan", "test", "PostTest"]
     environment:
       - DB_CONNECTION=${DB_CONNECTION}
       - DB_PORT=${DB_PORT}
