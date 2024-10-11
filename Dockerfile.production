@@ -39,6 +39,8 @@ RUN php artisan config:clear && php artisan config:cache
 
 RUN php artisan key:generate
 
+RUN cat app/.env
+
 EXPOSE 8080
 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
