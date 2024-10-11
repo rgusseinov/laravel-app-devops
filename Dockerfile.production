@@ -35,11 +35,15 @@ COPY app/. .
 # Install application dependencies
 RUN composer install
 
-RUN php artisan config:clear && php artisan config:cache
+#RUN php artisan config:clear && php artisan config:cache
 
-RUN php artisan key:generate
+RUN php artisan key:generate --env=testing
 
-RUN cat .env
+COPY app/.env.testing .env.testing
+
+RUN php artisan config:clear && php artisan config:cache --env=testing
+
+RUN cat .env.testing
 
 EXPOSE 8080
 
