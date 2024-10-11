@@ -12,6 +12,7 @@ services:
       db:
         condition: service_healthy
     environment:
+      - APP_KEY=base64:G7sNR0M8Cyew7OX/K0Pl7WUHdxTx8nWPuPkDfQhIk3k=
       - DB_CONNECTION=${DB_CONNECTION}
       - DB_PORT=${DB_PORT}
       - DB_HOST=${DB_HOST}
