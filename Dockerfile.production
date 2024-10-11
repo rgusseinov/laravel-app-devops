@@ -39,7 +39,7 @@ RUN php artisan config:clear && php artisan config:cache
 
 RUN php artisan key:generate
 
-RUN cat app/.env
+RUN cat .env
 
 EXPOSE 8080
 
