@@ -1,0 +1,10 @@
+vault_db_host: "rc1a-jy1v0iz16g9oiyzx.mdb.yandexcloud.net"
+vault_db_connection: "pgsql"
+vault_db_database: "laravel_ruslan_db"
+vault_db_username: "ruslan"
+vault_db_port: "6432"
+vault_db_password: "bvcF5d*sfdV_"
+
+vault_inventory_hostname: "devops-app.ru"
+
+vault_datadog_api_key: "22372426d7592233bd9f60375f5bbc60"

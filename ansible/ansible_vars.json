@@ -1,0 +1,193 @@
+{
+  "db_cluster_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "c9qgfb9dlmva72c60vh3"
+  },
+  "db_host": {
+    "sensitive": false,
+    "type": "string",
+    "value": "rc1a-zgchcfenj1japbq5.mdb.yandexcloud.net"
+  },
+  "db_name": {
+    "sensitive": true,
+    "type": "string",
+    "value": "laravel_ruslan_db"
+  },
+  "db_password": {
+    "sensitive": true,
+    "type": "string",
+    "value": "bvcF5d*sfdV_"
+  },
+  "db_username": {
+    "sensitive": true,
+    "type": "string",
+    "value": "ruslan"
+  },
+  "webserver_ips": {
+    "sensitive": false,
+    "type": [
+      "tuple",
+      [
+        [
+          "list",
+          [
+            "object",
+            {
+              "dns_record": [
+                "list",
+                [
+                  "object",
+                  {
+                    "dns_zone_id": "string",
+                    "fqdn": "string",
+                    "ptr": "bool",
+                    "ttl": "number"
+                  }
+                ]
+              ],
+              "index": "number",
+              "ip_address": "string",
+              "ipv4": "bool",
+              "ipv6": "bool",
+              "ipv6_address": "string",
+              "ipv6_dns_record": [
+                "list",
+                [
+                  "object",
+                  {
+                    "dns_zone_id": "string",
+                    "fqdn": "string",
+                    "ptr": "bool",
+                    "ttl": "number"
+                  }
+                ]
+              ],
+              "mac_address": "string",
+              "nat": "bool",
+              "nat_dns_record": [
+                "list",
+                [
+                  "object",
+                  {
+                    "dns_zone_id": "string",
+                    "fqdn": "string",
+                    "ptr": "bool",
+                    "ttl": "number"
+                  }
+                ]
+              ],
+              "nat_ip_address": "string",
+              "nat_ip_version": "string",
+              "security_group_ids": [
+                "set",
+                "string"
+              ],
+              "subnet_id": "string"
+            }
+          ]
+        ],
+        [
+          "list",
+          [
+            "object",
+            {
+              "dns_record": [
+                "list",
+                [
+                  "object",
+                  {
+                    "dns_zone_id": "string",
+                    "fqdn": "string",
+                    "ptr": "bool",
+                    "ttl": "number"
+                  }
+                ]
+              ],
+              "index": "number",
+              "ip_address": "string",
+              "ipv4": "bool",
+              "ipv6": "bool",
+              "ipv6_address": "string",
+              "ipv6_dns_record": [
+                "list",
+                [
+                  "object",
+                  {
+                    "dns_zone_id": "string",
+                    "fqdn": "string",
+                    "ptr": "bool",
+                    "ttl": "number"
+                  }
+                ]
+              ],
+              "mac_address": "string",
+              "nat": "bool",
+              "nat_dns_record": [
+                "list",
+                [
+                  "object",
+                  {
+                    "dns_zone_id": "string",
+                    "fqdn": "string",
+                    "ptr": "bool",
+                    "ttl": "number"
+                  }
+                ]
+              ],
+              "nat_ip_address": "string",
+              "nat_ip_version": "string",
+              "security_group_ids": [
+                "set",
+                "string"
+              ],
+              "subnet_id": "string"
+            }
+          ]
+        ]
+      ]
+    ],
+    "value": [
+      [
+        {
+          "dns_record": [],
+          "index": 0,
+          "ip_address": "192.168.192.26",
+          "ipv4": true,
+          "ipv6": false,
+          "ipv6_address": "",
+          "ipv6_dns_record": [],
+          "mac_address": "d0:0d:1e:8f:78:d2",
+          "nat": true,
+          "nat_dns_record": [],
+          "nat_ip_address": "",
+          "nat_ip_version": "IPV4",
+          "security_group_ids": [
+            "enprhlscsgal0s6evqj3"
+          ],
+          "subnet_id": "e9bg9k0onti9nj2nv6p9"
+        }
+      ],
+      [
+        {
+          "dns_record": [],
+          "index": 0,
+          "ip_address": "192.168.192.35",
+          "ipv4": true,
+          "ipv6": false,
+          "ipv6_address": "",
+          "ipv6_dns_record": [],
+          "mac_address": "d0:0d:1c:7c:75:53",
+          "nat": true,
+          "nat_dns_record": [],
+          "nat_ip_address": "",
+          "nat_ip_version": "IPV4",
+          "security_group_ids": [
+            "enprhlscsgal0s6evqj3"
+          ],
+          "subnet_id": "e9bg9k0onti9nj2nv6p9"
+        }
+      ]
+    ]
+  }
+}

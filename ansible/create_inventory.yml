@@ -1,0 +1,18 @@
+- hosts: localhost
+  gather_facts: no
+  vars:
+    ansible_vars: "{{ lookup('file', 'ansible_vars.json') | from_json }}"
+    
+  tasks:
+    - name: Generating inventory.ini
+      template:
+        src: inventory.ini.j2
+        dest: inventory.ini
+
+    - name: Creating an ansible vault.yml
+      template:
+        src: vault.j2
+        dest: group_vars/webservers/vault.yml
+
+    - name: Encryption of vault.yml
+      command: make encrypt
