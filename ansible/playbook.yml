@@ -3,38 +3,20 @@
   tags: deploy
 
   tasks:
+    - name: Install vim
+      ansible.builtin.package:
+        name: vim
+        state: present
+
     - name: Debug db_connection variable
       debug:
         var: db_connection
-
-    - name: Debug db_host variable
-      debug:
-        var: db_host
-
-    - name: Check if template file exists
-      stat:
-        path: templates/env.j2
-      register: template_file
-
-    - name: Debug template file existence
-      debug:
-        var: template_file
 
     - name: create env
       ansible.builtin.template:
         src: templates/env.j2
         dest: .env
         mode: "0644"
-
-    - name: Check if .env file was created
-      stat:
-        path: .env
-      register: env_file
-
-    - name: Debug .env file existence
-      debug:
-        var: env_file
-
     - name: Run laravel app on container
       community.docker.docker_container:
         image: ruslan0688/laravel-app-devops
@@ -44,6 +26,5 @@
         restart_policy: "always"
         restart: true
         ports:
-          - "80:3000"
+          - "80:8080"
         env_file: .env
-
