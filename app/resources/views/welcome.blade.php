@@ -64,6 +64,6 @@
     </body>
 
     <footer>
-        <p>Version 1.0.2</p>
+        <p>Version 1.0.3</p>
     </footer>
 </html>
