@@ -3,11 +3,27 @@
   tags: deploy
 
   tasks:
+    - name: Stop running container
+      community.docker.docker_container:
+        name: laravel-app
+        state: stopped
+
+    - name: Remove stopped container
+      community.docker.docker_container:
+        name: laravel-app
+        state: absent
+
+    - name: Remove image
+      community.docker.docker_image:
+        name: ruslan0688/laravel-app-devops
+        state: absent
+
     - name: create env
       ansible.builtin.template:
         src: templates/env.j2
         dest: .env
         mode: "0644"
+
     - name: Run laravel app on container
       community.docker.docker_container:
         image: ruslan0688/laravel-app-devops
@@ -19,5 +35,9 @@
         ports:
           - "80:8080"
         volumes:
-          - "/home/ruslan/.env:/app/.env"  # Замените на путь, который ожидает ваше приложение внутри контейнера
+          - "/home/ruslan/.env:/app/.env"
 
+    - name: Clear Laravel config cache
+      community.docker.docker_container_exec:
+        container: laravel-app
+        command: php artisan config:clear    
