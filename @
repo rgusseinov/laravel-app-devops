@@ -1,0 +1,31 @@
+- hosts: all
+  become: yes
+  tags: deploy
+
+  tasks:
+    - name: Create .env file on the host
+      ansible.builtin.template:
+        src: templates/env.j2
+        dest: "~/.env"
+        mode: "0644"
+    
+    - name: Read environment variables from .env file
+      ansible.builtin.slurp:
+        src: "~/.env"
+      register: env_file_content
+
+    - name: Convert .env content to environment variables
+      set_fact:
+        env_vars: "{{ env_file_content.content | b64decode | split('\n') | map('regex_replace', '^(.*)=(.*)$', '\\1=\\2') | list }}"
+
+    - name: Run Laravel app on container with environment variables
+      community.docker.docker_container:
+        image: ruslan0688/laravel-app-devops
+        platform: linux/amd64
+        name: laravel-app
+        state: started
+        restart_policy: "always"
+        ports:
+          - "80:8080"
+        environment: "{{ env_vars }}"
+

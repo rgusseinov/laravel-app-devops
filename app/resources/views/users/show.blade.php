@@ -9,6 +9,7 @@
                     <h2 class="mb-5">User Page: {{ $user->name }}<a href={{ url("/users/{$user->id}/edit") }}>⚙</a></h2>
                     <p><span class="font-black">Name:</span> {{ $user->name }}</p>
                     <p><span class="font-black">Email:</span> {{ $user->email }} </p>
+                    <p><span class="font-black">Position title:</span> {{ $user->position }} </p>
                 </div>
             </div>
         </section>
