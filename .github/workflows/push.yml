@@ -56,14 +56,6 @@ jobs:
           echo $NEW_VERSION > VERSION
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
-      - name: Commit new version
-        run: |
-          git config --global user.name "Ruslan Gusseinov"
-          git config --global user.email "r.gusseinov@mail.ru"
-          git add VERSION
-          git commit -m "Increment version to ${{ env.NEW_VERSION }}"
-          git push origin main
-
       - name: Install Docker Compose
         run: |
           sudo apt-get update
