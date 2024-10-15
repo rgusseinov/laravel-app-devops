@@ -40,7 +40,7 @@ jobs:
           file: Dockerfile.production
           push: true
           tags: |
-            ruslan0688/laravel-app-devops:lastest
+            ruslan0688/laravel-app-devops:latest
             ruslan0688/laravel-app-devops:${{ env.VERSION }}
 
       - name: Install Docker Compose
