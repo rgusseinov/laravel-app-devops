@@ -62,4 +62,8 @@
             </ul>
         </nav>
     </body>
+
+    <footer>
+        <p>Version 1.0.1</p>
+    </footer>
 </html>

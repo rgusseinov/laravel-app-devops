@@ -1,6 +1,8 @@
 - hosts: all
   become: yes
   tags: deploy
+  vars:
+    image_version: "1.0.0"
 
   tasks:
     - name: Stop running container
@@ -18,6 +20,11 @@
         name: ruslan0688/laravel-app-devops
         state: absent
 
+    - name: Pull the specific version of the image
+      community.docker.docker_image:
+        name: "ruslan0688/laravel-app-devops:{{ image_version }}"
+        source: pull
+
     - name: create env
       ansible.builtin.template:
         src: templates/env.j2
@@ -26,7 +33,7 @@
 
     - name: Run laravel app on container
       community.docker.docker_container:
-        image: ruslan0688/laravel-app-devops
+        image: "ruslan0688/laravel-app-devops:{{ image_version }}"
         platform: linux/amd64
         name: laravel-app
         state: started
