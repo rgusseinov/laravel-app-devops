@@ -2,7 +2,8 @@
   become: yes
   tags: deploy
   vars:
-    image_version: "1.0.3"
+    pre_image_version: "1.0.3"
+    actual_image_version: "1.0.2"
 
   tasks:
     - name: Stop running container
@@ -18,12 +19,12 @@
 
     - name: Remove image
       community.docker.docker_image:
-        name: ruslan0688/laravel-app-devops
+        name: "ruslan0688/laravel-app-devops: {{ prev_image_version }}"
         state: absent
 
     - name: Pull the specific version of the image
       community.docker.docker_image:
-        name: "ruslan0688/laravel-app-devops:{{ image_version }}"
+        name: "ruslan0688/laravel-app-devops:{{ actual_image_version }}"
         source: pull
 
     - name: create env
@@ -34,7 +35,7 @@
 
     - name: Run laravel app on container
       community.docker.docker_container:
-        image: "ruslan0688/laravel-app-devops:{{ image_version }}"
+        image: "ruslan0688/laravel-app-devops:{{ actual_image_version }}"
         platform: linux/amd64
         name: laravel-app
         state: started
@@ -48,4 +49,9 @@
     - name: Clear Laravel config cache
       community.docker.docker_container_exec:
         container: laravel-app
-        command: php artisan config:clear    
+        command: php artisan config:clear
+
+    - name: Roll back DB migration to one step back
+      community.docker.docker_container_exec:
+        container: laravel-app
+        command: php artisan migrate:rollback --step=1   

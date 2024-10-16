@@ -13,6 +13,9 @@ install:
 deploy:
 	make -C ansible deploy
 
+rollback:
+	make -C ansible rollback
+
 inventory:
 	make -C ansible inventory
 
