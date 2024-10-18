@@ -4,6 +4,7 @@
 
 <h1>Users</h1>
 <p>List of system users!</p>
+<span>GEMS admins</span>
 <ul>
     @foreach ($users as $user)
         <li><a href="/users/{{ $user->id }}">{{ $user->name }}, {{ $user->email }}</a></li>
