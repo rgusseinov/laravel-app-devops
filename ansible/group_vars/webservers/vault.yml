@@ -1,4 +1,4 @@
-vault_db_host: "rc1a-jy1v0iz16g9oiyzx.mdb.yandexcloud.net"
+vault_db_host: "rc1a-yukh7j57x0iw9e6a.mdb.yandexcloud.net"
 vault_db_connection: "pgsql"
 vault_db_database: "laravel_ruslan_db"
 vault_db_username: "ruslan"

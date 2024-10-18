@@ -2,7 +2,7 @@
   become: yes
   tags: deploy
   vars:
-    image_version: "1.0.4"
+    image_version: "latest"
 
   tasks:
     - name: Stop running container
