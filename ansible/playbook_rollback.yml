@@ -2,8 +2,8 @@
   become: yes
   tags: deploy
   vars:
-    pre_image_version: "1.0.3"
-    actual_image_version: "1.0.2"
+    prev_image_version: "1.0.3"
+    actual_image_version: "latest"
 
   tasks:
     - name: Stop running container

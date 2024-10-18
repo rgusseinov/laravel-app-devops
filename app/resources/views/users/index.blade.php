@@ -4,10 +4,13 @@
 
 <h1>Users</h1>
 <p>List of system users!</p>
-<span>GEMS admins</span>
-<span>Active users</span>
-<ul>
+<table>
+    <tr><th>User</th> <th> Email</th> <th>Location</th></tr>
     @foreach ($users as $user)
-        <li><a href="/users/{{ $user->id }}">{{ $user->name }}, {{ $user->email }}</a></li>
+        <tr>
+            <td>{{ $user->name }}</td>
+            <td><a href="/users/{{ $user->id }}">{{ $user->email }}</a></td>
+            <td>{{ $user->location }}</td>
+        </tr>
     @endforeach
-</ul>
+</table>
