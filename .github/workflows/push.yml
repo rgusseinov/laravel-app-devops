@@ -13,13 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         
-      # Fetch tags
+      # Fetch all tags
       - name: Fetch all tags
         run: git fetch --tags
 
-      # Retrieve the latest tag
-      - name: Get latest tag
+      # Get the latest tag
+      - name: Get the latest tag
         id: get_tag
-        run: echo "TAG=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
+        run: echo "TAG=$(git tag --sort=-creatordate | head -n 1)" >> $GITHUB_ENV
 
-     
+      # Output the latest tag
+      - name: Output latest tag
+        run: echo "The latest tag is: $TAG"
+   
