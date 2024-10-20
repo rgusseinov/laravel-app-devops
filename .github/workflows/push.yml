@@ -25,3 +25,4 @@ jobs:
       # Output the latest tag
       - name: Output latest tag
         run: echo "The latest tag is: $TAG"
+
