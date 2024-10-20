@@ -1,5 +1,3 @@
-push.yml:
-
 name: push
 
 on:
