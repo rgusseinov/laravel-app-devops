@@ -9,10 +9,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-     
-      - name: Read version from VERSION file
-        id: vars
-        run: |
-          VERSION=$(cat VERSION)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "Version is $VERSION"
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      # Fetch tags
+      - name: Fetch all tags
+        run: git fetch --tags
+
+      # Retrieve the latest tag
+      - name: Get latest tag
+        id: get_tag
+        run: echo "TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+
+      # Output the latest tag
+      - name: Output latest tag
+        run: echo "The latest tag is: $TAG"
