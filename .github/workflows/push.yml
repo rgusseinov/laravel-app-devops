@@ -22,7 +22,3 @@ jobs:
         id: get_tag
         run: echo "TAG=$(git tag --sort=-creatordate | head -n 1)" >> $GITHUB_ENV
 
-      # Output the latest tag
-      - name: Output latest tag
-        run: echo "The latest tag is: $TAG"
-   
