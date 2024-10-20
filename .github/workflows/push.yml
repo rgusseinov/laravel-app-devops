@@ -9,16 +9,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repository
       - name: Checkout code
-        uses: actions/checkout@v3
-        
-      # Fetch all tags
-      - name: Fetch all tags
-        run: git fetch --tags
+        uses: actions/checkout@v2
 
-      # Get the latest tag
+      - name: Set up Git
+        run: |
+          git config --global user.name 'Ruslan Gusseinov'
+          git config --global user.email 'r.gusseinov@mail.ru'
+
       - name: Get the latest tag
         id: get_tag
-        run: echo "TAG=$(git tag --sort=-creatordate | head -n 1)" >> $GITHUB_ENV
+        run: echo "::set-output name=tag::$(git describe --tags --abbrev=0)"
+
+      - name: Output the tag
+        run: echo "The latest tag is ${{ steps.get_tag.outputs.tag }}"
 
