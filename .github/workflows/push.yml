@@ -14,7 +14,7 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.name 'Ruslan Gusseinov'
+          git config --global user.name 'Ruslan'
           git config --global user.email 'r.gusseinov@mail.ru'
 
       - name: Get the latest tag
