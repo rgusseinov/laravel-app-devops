@@ -19,8 +19,8 @@ jobs:
 
       - name: Get the latest tag
         id: get_tag
-        run: echo "::set-output name=tag::$(git describe --tags --abbrev=0)"
+        run: echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
 
       - name: Output the tag
-        run: echo "The latest tag is ${{ steps.get_tag.outputs.tag }}"
+        run: echo "The latest tag is ${{ env.tag }}"
 
