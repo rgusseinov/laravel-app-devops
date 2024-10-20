@@ -21,8 +21,4 @@ jobs:
       - name: Get latest tag
         id: get_tag
         run: echo "TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
-
-      # Output the latest tag
-      - name: Output latest tag
-        run: echo "The latest tag is: $TAG"
-
+    
