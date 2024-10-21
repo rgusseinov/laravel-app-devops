@@ -17,8 +17,7 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
           echo "Latest commit message: $COMMIT_MESSAGE"
       
-      - name: Get tag
+      - name: Get latest tag
         run: |
-          MESSAGE=$(git describe --tags)
-          echo "Latest tag: $MESSAGE"
-
+          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "No tags found")
+          echo "Latest tag: $TAG"
