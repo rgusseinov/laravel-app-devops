@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  create-and-push-tag:
+  get-latest-tag:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,24 +15,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get current version
-        id: get_version
-        run: echo "CURRENT_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
+      - name: Get latest tag
+        id: get_tag
+        run: echo "LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
 
-      - name: Increment version
-        id: increment_version
-        run: |
-          VERSION=${{ env.CURRENT_VERSION }}
-          NEW_VERSION=$(echo $VERSION | awk -F. -v OFS=. '{$NF++;print}')
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-
-      - name: Create new tag
-        run: |
-          git config --global user.name "Ruslan"
-          git config --global user.email "r.gusseinov@mail.ru"
-          git tag -a ${{ env.NEW_VERSION }} -m "Automated tag creation"
-          git push origin ${{ env.NEW_VERSION }}
-
-      - name: Output new tag
-        run: echo "The new tag is ${{ env.NEW_VERSION }}"
-
+      - name: Output latest tag
+        run: echo "The latest tag is ${{ env.LATEST_TAG }}"
