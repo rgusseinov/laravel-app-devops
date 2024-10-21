@@ -5,6 +5,7 @@
 <h1>Users</h1>
 <p>List of system users.</p>
 <p>List of system users.</p>
+<p>List of system users.</p>
 <table>
     <tr><th>User</th> <th> Email</th> <th>Location</th></tr>
     @foreach ($users as $user)
