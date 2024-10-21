@@ -1,0 +1,99 @@
+[33m2f58e93[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;33mtag: 1.0.6[m[33m)[m feature 2
+[33m5654b4e[m[33m ([m[1;33mtag: 1.0.5[m[33m, [m[1;33mtag: 1.0.4[m[33m, [m[1;31morigin/main[m[33m)[m fix 4
+[33m0335175[m test 3
+[33m1a53998[m test 2
+[33m737173b[m test 123
+[33mb819005[m[33m ([m[1;33mtag: 3.0[m[33m)[m test 3
+[33mff20778[m[33m ([m[1;33mtag: v1.0.4[m[33m, [m[1;33mtag: v1.0.3[m[33m)[m fix
+[33md0de956[m[33m ([m[1;33mtag: v1.0.2[m[33m)[m fix 10
+[33mf20e136[m fix 9
+[33m49978ff[m[33m ([m[1;33mtag: v1.0.1[m[33m)[m fix 9
+[33mb719065[m fix 8
+[33mdae858c[m[33m ([m[1;33mtag: v1.0.0[m[33m, [m[1;33mtag: 2.9[m[33m)[m fix 8
+[33m2113638[m[33m ([m[1;33mtag: 2.8[m[33m)[m fix 8
+[33m12d57f9[m[33m ([m[1;33mtag: 2.7[m[33m)[m fix 7
+[33m094c69d[m fix 6
+[33mef1c8cf[m fix 6
+[33mff43475[m fix 5
+[33md2b69f7[m[33m ([m[1;33mtag: 2.6[m[33m)[m fix 5
+[33m0f8db95[m[33m ([m[1;33mtag: 2.5[m[33m)[m fix 4
+[33mdb167ef[m[33m ([m[1;33mtag: 2.4[m[33m)[m fix 4
+[33mdf28ec7[m fix 4
+[33m10099f4[m[33m ([m[1;33mtag: 2.3[m[33m)[m fix 3
+[33m2347707[m[33m ([m[1;33mtag: 2.2[m[33m)[m fix 3
+[33m30c41c9[m[33m ([m[1;33mtag: 2.1[m[33m)[m fix 3
+[33m75bd7a5[m[33m ([m[1;33mtag: 2.0[m[33m)[m fix 2
+[33m3e0b111[m[33m ([m[1;33mtag: 1.9[m[33m)[m fix
+[33mbb10e05[m[33m ([m[1;33mtag: 1.8[m[33m)[m fix
+[33m32e7107[m[33m ([m[1;33mtag: 1.7[m[33m)[m fix
+[33mb8b5a26[m[33m ([m[1;33mtag: 1.6[m[33m)[m fix
+[33m255b327[m test
+[33mb6fb5d5[m[33m ([m[1;33mtag: 1.5[m[33m)[m fix
+[33m36ad41c[m[33m ([m[1;33mtag: 1.4[m[33m)[m fix
+[33m48ea140[m[33m ([m[1;33mtag: 1.3[m[33m)[m add location field and correct user listing markup
+[33mc112914[m add label in user list page 2
+[33m7eef475[m[33m ([m[1;33mtag: v1.2[m[33m)[m add label in user list page
+[33m4146ffe[m fix user page
+[33m18821ca[m[33m ([m[1;33mtag: 1.1[m[33m)[m fix
+[33m8bdd0a6[m instal fresh laravel and add posts
+[33mf9e4d50[m add roll back playbook for image and db migration
+[33mde2a1cf[m new version
+[33mb16c958[m new version
+[33m3ceb3e7[m new version
+[33mc1f9df2[m[33m ([m[1;33mtag: 1.0.2[m[33m)[m new version
+[33m3f1721e[m[33m ([m[1;33mtag: 1.0.1[m[33m)[m new version
+[33mf6c5620[m fix
+[33m3d8b651[m fix
+[33m9f76863[m Add VERSION file with initial version
+[33m2ef8b15[m fix
+[33m8a77e15[m correct tag name
+[33m88541ec[m correct user page label
+[33m71e069e[m[33m ([m[1;33mtag: v1.0[m[33m)[m add page label
+[33m8a535da[m add position title in users
+[33m9bdc475[m add user entity
+[33m5322131[m add ansible
+[33m5685a01[m add test service for php artisan test
+[33m0b54246[m add vars in tests
+[33ma4e7de8[m fix 2
+[33m2777211[m fix 2
+[33m41f028b[m fix 1
+[33m7595161[m fix 1
+[33mcdecdfe[m fix 1
+[33mea0ac1b[m add app key in laravel
+[33ma070efa[m fix 1
+[33m9ff58cf[m add app key
+[33m4bdc479[m fix 1
+[33m64aa776[m add docker db container
+[33m7276ac2[m fix 8
+[33ma24eb3e[m fix 8
+[33mb6ef2ee[m fix 8
+[33m8ea4688[m fix 7
+[33me1b472d[m fix 7
+[33mbc14f3a[m fix 7
+[33m45c24b2[m fix 6
+[33md438316[m fix 5
+[33me86f167[m fix 5
+[33m10d719a[m fix 5
+[33mac3ccf7[m fix 5
+[33m4667db3[m fix 5
+[33md60e38e[m fix 4
+[33m4aa509a[m fix 4
+[33meab6229[m fix 3
+[33m3c0ed2a[m fix 3
+[33m01d9dea[m fix 2
+[33m6ff321e[m fix 2
+[33m33106b3[m fix 2
+[33ma28aeb1[m fix
+[33me4c9633[m fix
+[33m31e7d06[m fix
+[33m8d90c5d[m fix
+[33mb24b703[m fix
+[33m3086f53[m fix
+[33md90544b[m fix
+[33mbfd6650[m fix
+[33mb629f6d[m fix
+[33m754b281[m fix
+[33mcfd2efe[m test
+[33m4c4adee[m add post entity and tests
+[33mb770426[m prepare docker compose for app
+[33m3b0f8ff[m pull fresh laravel app
