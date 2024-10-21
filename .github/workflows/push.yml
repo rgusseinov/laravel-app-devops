@@ -16,4 +16,9 @@ jobs:
         run: |
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
           echo "Latest commit message: $COMMIT_MESSAGE"
+      
+      - name: Get tag
+        run: |
+          MESSAGE=$(git tag -1 --pretty=%B)
+          echo "Latest tag: $MESSAGE"
 
