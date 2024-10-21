@@ -1,28 +1,22 @@
-name: Print Commit Message
+name: Get Latest Tag
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - '*'
 
 jobs:
-  print-commit-message:
+  get-latest-tag:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Get latest commit message
-        run: |
-          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
-          echo "Latest commit message: $COMMIT_MESSAGE"
-      
-      - name: Show value
-        run: |
-          echo $GITHUB_REF_TYPE
+      - name: Get latest tag
+        id: get_tag
+        run: echo "LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
 
-      - name: latest tag
-        run: |
-          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "No tags found")
-          echo "Latest tag: $TAG"
+      - name: Output latest tag
+        run: echo "The latest tag is ${{ env.LATEST_TAG }}"
 
