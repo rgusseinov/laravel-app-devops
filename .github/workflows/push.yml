@@ -21,3 +21,4 @@ jobs:
         run: |
           TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "No tags found")
           echo "Latest tag: $TAG"
+
