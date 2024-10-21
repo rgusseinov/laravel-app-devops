@@ -1,4 +1,4 @@
-name: push
+name: Print Commit Message
 
 on:
   push:
@@ -6,21 +6,14 @@ on:
       - main
 
 jobs:
-  build:
+  print-commit-message:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up Git
+      - name: Get latest commit message
         run: |
-          git config --global user.name 'Ruslan'
-          git config --global user.email 'r.gusseinov@mail.ru'
-
-      - name: Get the ref type
-        id: get_tag
-        run: echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_REF_TYPE
-
-      - name: Output the tag
-        run: echo "The latest tag is ${{ env.tag }}"
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          echo "Latest commit message: $COMMIT_MESSAGE"
 
