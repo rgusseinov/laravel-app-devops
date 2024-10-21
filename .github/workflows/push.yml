@@ -28,8 +28,8 @@ jobs:
 
       - name: Create new tag
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config --global user.name "Ruslan"
+          git config --global user.email "r.gusseinov@mail.ru"
           git tag -a ${{ env.NEW_VERSION }} -m "Automated tag creation"
           git push origin ${{ env.NEW_VERSION }}
 
