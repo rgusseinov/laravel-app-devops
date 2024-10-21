@@ -19,7 +19,7 @@ jobs:
       
       - name: Show value
         run: |
-          echo $GITHUB_REF
+          echo $GITHUB_REF_TYPE
 
       - name: latest tag
         run: |
