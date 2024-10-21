@@ -19,6 +19,6 @@ jobs:
       
       - name: Get tag
         run: |
-          MESSAGE=$(git describe --tags --abbrev=0)
+          MESSAGE=$(git describe --tags)
           echo "Latest tag: $MESSAGE"
 
