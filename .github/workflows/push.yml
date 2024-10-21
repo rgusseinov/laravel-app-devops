@@ -1,9 +1,9 @@
-name: Get Latest Tag
+name: Push
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
 
 jobs:
   get-latest-tag:
