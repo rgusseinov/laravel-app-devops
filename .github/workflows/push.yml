@@ -17,10 +17,9 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
           echo "Latest commit message: $COMMIT_MESSAGE"
       
-      - name: List all tags
+      - name: Show env
         run: |
-          TAGS=$(git tag)
-          echo "tags $TAGS"
+          echo $GITHUB_ENV
 
       - name: latest tag
         run: |
