@@ -2,7 +2,7 @@ inventory:
 	ansible-playbook -i inventory.ini -v create_inventory.yml
 
 deploy:
-	ansible-playbook playbook.yml --vault-password-file vault_password -i inventory.ini
+	ansible-playbook playbook.yml --vault-password-file vault_password -i inventory.ini -e "image_version=$(image_version)"
 
 rollback:
 	ansible-playbook playbook_rollback.yml --vault-password-file vault_password -i inventory.ini

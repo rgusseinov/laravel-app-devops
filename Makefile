@@ -11,7 +11,7 @@ install:
 	make -C ansible install
 
 deploy:
-	make -C ansible deploy
+	make -C ansible deploy -e "image_version=$(VERSION)"
 
 rollback:
 	make -C ansible rollback
