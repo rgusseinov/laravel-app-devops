@@ -4,10 +4,13 @@ on:
   push:
     branches:
       - main
+      - release/*
+      - develop
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')
     steps:
       - uses: actions/checkout@v2
         with:
@@ -55,4 +58,29 @@ jobs:
 
       - name: Run Tests
         run: make ci
+
+  test_develop:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'  # Only runs on develop branch
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up environment variables
+        run: |
+          echo "DB_CONNECTION=${{ secrets.DB_CONNECTION }}" >> app/.env
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> app/.env
+          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> app/.env
+          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> app/.env
+          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> app/.env
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> app/.env
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker-compose -y
+
+      - name: Run Tests
+        run: make ci  # Run your test suite for development
 

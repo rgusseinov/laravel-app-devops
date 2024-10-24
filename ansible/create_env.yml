@@ -1,0 +1,15 @@
+- hosts: localhost
+  gather_facts: no
+  vars:
+    db_connection: 'pgsql'   
+    db_host: '123'
+    db_port: '777'
+    db_database: 'db_rus'
+    db_username: 'rus'
+    db_password: '123456'
+
+  tasks:
+    - name: Generating .env file
+      template:
+        src: env.j2
+        dest: ../app/.env222

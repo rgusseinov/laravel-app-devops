@@ -1,6 +1,9 @@
 inventory:
 	ansible-playbook -i inventory.ini -v create_inventory.yml
 
+create_env:
+	ansible-playbook create_env.yml --vault-password-file vault_password 
+
 deploy:
 	ansible-playbook playbook.yml --vault-password-file vault_password -i inventory.ini -e "image_version=$(image_version)"
 
