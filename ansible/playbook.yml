@@ -2,7 +2,11 @@
   become: yes
   tags: deploy
   vars:
-    image_version: "1.3" // ansible ci variable fetch
+    image_version: "{{ image_version | default('latest') }}"
+  tasks:
+    - name: Debug the image version
+      debug:
+        msg: "The image version is {{ image_version }}"
 
   tasks:
     - name: Stop running container
@@ -49,8 +53,4 @@
       community.docker.docker_container_exec:
         container: laravel-app
         command: php artisan config:clear  
-
-    - name: Run DB migrate
-      community.docker.docker_container_exec:
-        container: laravel-app
-        command: php artisan migrate
+   

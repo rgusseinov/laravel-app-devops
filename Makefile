@@ -11,13 +11,16 @@ install:
 	make -C ansible install
 
 deploy:
-	make -C ansible deploy
+	make -C ansible deploy -e "image_version=$(VERSION)"
 
 rollback:
 	make -C ansible rollback
 
 inventory:
 	make -C ansible inventory
+
+create_env:
+	make -C ansible create_env
 
 encrypt:
 	ansible-vault encrypt --ask-vault-password ansible/group_vars/webservers/vault.yml
