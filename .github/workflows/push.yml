@@ -1,20 +1,18 @@
-name: push
+name: CI/CD Workflow
 
 on:
   push:
     branches:
       - main
-      - release/*
       - develop
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Ensure that all tags are fetched for getting the latest tag
+          fetch-depth: 0
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -22,6 +20,14 @@ jobs:
       - name: Get latest tag
         id: get_tag
         run: echo "LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
+
+      - name: Determine Environment Tag
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/develop" ]; then
+            echo "ENV_TAG=staging.${{ env.LATEST_TAG }}" >> $GITHUB_ENV
+          elif [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "ENV_TAG=prod.${{ env.LATEST_TAG }}" >> $GITHUB_ENV
+          fi
 
       - name: Set up environment variables
         run: |
@@ -38,49 +44,20 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       
-      - name: Build App
+      - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
           context: .
           file: Dockerfile.production
           push: true
           tags: |
-            ruslan0688/laravel-app-devops:latest
-            ruslan0688/laravel-app-devops:${{ env.LATEST_TAG }}
+            ruslan0688/laravel-app-devops:${{ env.ENV_TAG }}
 
       - name: Install Docker Compose
         run: |
           sudo apt-get update
           sudo apt-get install docker-compose -y
-
-      - name: Check Docker Compose version
-        run: docker-compose --version
 
       - name: Run Tests
         run: make ci
-
-  test_develop:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop'  # Only runs on develop branch
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Set up environment variables
-        run: |
-          echo "DB_CONNECTION=${{ secrets.DB_CONNECTION }}" >> app/.env
-          echo "DB_PORT=${{ secrets.DB_PORT }}" >> app/.env
-          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> app/.env
-          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> app/.env
-          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> app/.env
-          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> app/.env
-
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install docker-compose -y
-
-      - name: Run Tests
-        run: make ci  # Run your test suite for development
 
