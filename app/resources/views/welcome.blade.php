@@ -62,8 +62,12 @@
             </ul>
         </nav>
     </body>
-
+        <p>
+            Hello, Ruslan!
+            <br />
+            Welcome to app.
+        </p>
     <footer>
-        <p>Version 1.0.4</p>
+        <p></p>
     </footer>
 </html>
