@@ -68,8 +68,9 @@
             Welcome to app.
         </p>
 
-        <h2>Users</h2>
-        <b>Mehtab, Mirshad, Ruslan</b>
+        <p>
+            Version 1.26
+        </p>
     <footer>
         <p></p>
     </footer>
