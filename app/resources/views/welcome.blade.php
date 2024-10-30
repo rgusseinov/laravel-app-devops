@@ -67,10 +67,6 @@
             <br />
             Welcome to app.
         </p>
-
-        <p>
-            Version 1.26
-        </p>
     <footer>
         <p></p>
     </footer>
