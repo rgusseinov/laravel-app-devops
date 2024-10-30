@@ -14,7 +14,8 @@ deploy:
 	make -C ansible deploy -e "image_version=$(VERSION)"
 
 rollback:
-	make -C ansible rollback
+	make -C ansible rollback -e rollback_batch=$(ROLLBACK_BATCH)"
+
 
 inventory:
 	make -C ansible inventory
