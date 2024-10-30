@@ -67,9 +67,6 @@
             <br />
             Welcome to app.
         </p>
-
-        <h2>Users</h2>
-        <b>Mehtab, Mirshad, Ruslan</b>
     <footer>
         <p></p>
     </footer>
