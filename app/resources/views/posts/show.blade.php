@@ -9,6 +9,9 @@
                     <h2 class="mb-5">Просмотр поста: {{ $post->title }}<a href={{ url("/posts/{$post->id}/edit") }}>⚙</a></h2>
                     <p><span class="font-black">Имя:</span> {{ $post->title }}</p>
                     <p><span class="font-black">Описание:</span> {{ $post->content }} </p>
+                    <p><span class="font-black">Дата публикации:</span> {{ $post->publish_date }} </p>
+                    <p><span class="font-black">Автор:</span> {{ $post->author }} </p>
+                    <p><span class="font-black">Статус:</span> {{ $post->status }} </p>
                 </div>
             </div>
         </section>

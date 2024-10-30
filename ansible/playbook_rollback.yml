@@ -2,56 +2,10 @@
   become: yes
   tags: deploy
   vars:
-    prev_image_version: "1.0.3"
-    actual_image_version: "latest"
+    rollback_batch: "{{ rollback_batch | default(1) }}"
 
   tasks:
-    - name: Stop running container
-      community.docker.docker_container:
-        name: laravel-app
-        state: stopped
-      failed_when: false
-
-    - name: Remove stopped container
-      community.docker.docker_container:
-        name: laravel-app
-        state: absent
-
-    - name: Remove image
-      community.docker.docker_image:
-        name: "ruslan0688/laravel-app-devops: {{ prev_image_version }}"
-        state: absent
-
-    - name: Pull the specific version of the image
-      community.docker.docker_image:
-        name: "ruslan0688/laravel-app-devops:{{ actual_image_version }}"
-        source: pull
-
-    - name: create env
-      ansible.builtin.template:
-        src: templates/env.j2
-        dest: .env
-        mode: "0644"
-
-    - name: Run laravel app on container
-      community.docker.docker_container:
-        image: "ruslan0688/laravel-app-devops:{{ actual_image_version }}"
-        platform: linux/amd64
-        name: laravel-app
-        state: started
-        restart_policy: "always"
-        restart: true
-        ports:
-          - "80:8080"
-        volumes:
-          - "/home/ruslan/.env:/app/.env"
-
-    - name: Clear Laravel config cache
+    - name: Roll back DB migration
       community.docker.docker_container_exec:
         container: laravel-app
-        command: php artisan config:clear
-
-    - name: Roll back DB migration to one step back
-      community.docker.docker_container_exec:
-        container: laravel-app
-        command: php artisan migrate:rollback --step=1   
+        command: "php artisan migrate:rollback --batch={{ rollback_batch }}"   
