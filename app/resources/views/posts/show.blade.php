@@ -11,6 +11,7 @@
                     <p><span class="font-black">Описание:</span> {{ $post->content }} </p>
                     <p><span class="font-black">Дата публикации:</span> {{ $post->publish_date }} </p>
                     <p><span class="font-black">Автор:</span> {{ $post->author }} </p>
+                    <p><span class="font-black">Статус:</span> {{ $post->status }} </p>
                 </div>
             </div>
         </section>
